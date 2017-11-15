@@ -1,11 +1,12 @@
 grammar Flow;
-@header {
-    package be.dbo;
-}
 
-flowExpr  : DEP departure ARR arrival;
+import Time;
+
+flowExpr  : DEP departure ARR arrival ON? time?;
 DEP : 'DEP' | 'dep' | 'Dep' ;
 ARR : 'ARR' | 'arr' | 'Arr' ;
+ON : 'O'| 'o' 'n' | 'n' ;
+
 departure: AD;
 arrival : AD;
 

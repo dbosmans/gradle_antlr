@@ -20,8 +20,10 @@ dependencies {
 generateGrammarSource {
 
     arguments += ["-visitor"]
+    arguments << "-lib" << "src/main/antlr/be/dbo"
 }
 
-
+generateGrammarSource {
+}
 
 

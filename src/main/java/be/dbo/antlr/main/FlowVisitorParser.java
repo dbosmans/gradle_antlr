@@ -43,8 +43,11 @@ public class FlowVisitorParser {
             Flow flow = new Flow();
             DepartureVisitor departureVisitor = new DepartureVisitor();
             ArrivalVisitor arrivalVisitor = new ArrivalVisitor();
+            TimeVisitor timeVisitor = new TimeVisitor();
+
             flow.setDeparture(departureVisitor.visitDeparture(ctx.departure()));
             flow.setArrival(arrivalVisitor.visitArrival(ctx.arrival()));
+            flow.setTime(timeVisitor.visitTime(ctx.time()));
             return flow;
 
         }
@@ -60,6 +63,16 @@ public class FlowVisitorParser {
     private static class ArrivalVisitor extends FlowBaseVisitor<String> {
         @Override
         public String visitArrival(FlowParser.ArrivalContext ctx) {
+            return ctx.getText();
+        }
+    }
+
+    private static class TimeVisitor extends FlowBaseVisitor<String> {
+        @Override
+        public String visitTime(FlowParser.TimeContext ctx) {
+            if (ctx == null) {
+                return null;
+            }
             return ctx.getText();
         }
     }
